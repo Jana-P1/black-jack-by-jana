@@ -11,22 +11,26 @@
   <title>Jana's Black Jack Game </title>
 </head>
 <body>
-  
-  <section class="dealer hand">
-    <div id="dealer-card-1" class="card large outline">Dealer's 1st card</div>
-    <div id="dealer-card-2" class="card large back-red shadow">Dealer's 2nd card</div>
-  </section>
-  <section class="house cards">
-    <div class="game title">BLACK</div>
-    <div id="deck" class="card large back-red shadow">Card Deck</div>
-    <div id="discard-pile" class="card large outline">Discarded cards</div>
-    <div class="game title"> JACK</div>
-  </section>
-  <section class="player hand" >
-    <div id="player-card-1" class="card large outline">Player's 1st card</div>
-    <div id="player-card-2" class="card large outline">Player's 2nd card</div>
-  </section>
-
+  <main>
+    <section class="dealer hand">
+      <div id="dealer-card-1" class="card large outline"></div>
+      <div id="dealer-card-2" class="card large back-red shadow"></div>
+    </section>
+    <section class="house cards">
+      <h1 class="game title">BLACK</h1>
+      <button type="button" class="btn btn-warning" id="start-game-button">Start game</button>
+      <div class="game cards">
+        <div id="deck" class="card large back-red shadow" hidden></div>
+        <div id="discard-pile" class="card large outline" hidden>
+      </div>
+    </div>
+    <h1 class="game title">JACK</h1>
+    </section>
+    <section class="player hand" >
+      <div id="player-card-1" class="card large outline"></div>
+      <div id="player-card-2" class="card large outline"></div>
+    </section>
+  </main>
 
 </body>
 </html>
