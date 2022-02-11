@@ -28,3 +28,28 @@ body {
   background-color: whitesmoke;
   height: 100vh;
 }
+
+.button {
+  border-radius: 15%;
+  font-size: 1.5rem;
+  padding: 5px;
+  text-align: center;
+}
+
+#yes-button {
+  background-color: #F80B0B;
+  color: whitesmoke;
+}
+
+#no-button {
+  background-color: #0B64F8;
+  color: white;
+}
+#start-game-button {
+  
+}
+
+.gametitle {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
