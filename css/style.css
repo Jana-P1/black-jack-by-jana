@@ -48,12 +48,12 @@ body {
 }
 
 #hit-button {
-  background-color: #EF972C;
+  background-color: #FF8A44;
 }
 
 #stay-button {
-  background-color: #0D6C8D;
-  color:antiquewhite;
+  background-color: #BBEB7D;
+  color: black;
 }
 
 .gametitle {
@@ -76,4 +76,7 @@ h1 {
 }
 h2 {
   font-size: 3.0rem;
+}
+main {
+  margin: 0;
 }
