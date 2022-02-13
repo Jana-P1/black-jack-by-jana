@@ -27,6 +27,5 @@
  *          - unhide all game-related elements
  *          - invoke function to shuffle cards
  *             - include setTimer function to simulate card shuffling with text informing the player that the cards are being shuffles
- *  
  *          - invoke render function
  *          */

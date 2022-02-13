@@ -31,7 +31,7 @@ body {
 
 .button {
   border-radius: 45%;
-  font-size: 1.5rem;
+  font-size: 2.0rem;
   padding: 5px;
   text-align: center;
 }
@@ -61,4 +61,16 @@ body {
 .gametitle {
   font-size: 2.4rem;
   font-weight: bold;
+}
+#opening-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4.0rem;
+}
+h2 {
+  font-size: 3.0rem;
 }

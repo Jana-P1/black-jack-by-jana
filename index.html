@@ -11,13 +11,15 @@
   <title>Jana's Black Jack Game </title>
 </head>
 <body>
-  <h1 id="welcome">Welcome to Black Jack</h1>
-  <h2 id="lets-play">Should I deal you in?</h2>
-  <div>
-    <button class="button yes" id="yes-button">YES</button>
-    <button type="button" class="button no" id="no-button">NO</button>
+  <div id="opening-screen">
+    <h1 id="welcome">Welcome to Black Jack</h1>
+    <h2 id="lets-play">Should I deal you in?</h2>
+    <div>
+      <button class="button yes" id="yes-button">YES</button>
+      <button type="button" class="button no" id="no-button">NO</button>
+    </div>
   </div>
-  <main>
+  <main hidden>
     <section class="dealer hand">
       <div id="dealer-card-1" class="card large outline"></div>
       <div id="dealer-card-2" class="card large back-red shadow"></div>
@@ -35,15 +37,15 @@
       <div id="player-card-1" class="card large outline"></div>
       <div id="player-card-2" class="card large outline"></div>
     </section>
-  </main>
-  <footer class="game buttons">
-    <div class="button container">
+    <footer class="game buttons">
+      <div class="button container">
       <!-- <button class="button start-game" id="start-game-button">Start game</button> -->
-      <button class="button hit" id="hit-button">HIT</button>
-      <button class="button stay" id="stay-button">STAY</button>
+        <button class="button hit" id="hit-button">HIT</button>
+        <button class="button stay" id="stay-button">STAY</button>
       <!-- <button type="button" class="">Deal</button> -->
-    </div>
-  </footer>
+      </div>
+    </footer>
+</main>
 
 </body>
 </html>
