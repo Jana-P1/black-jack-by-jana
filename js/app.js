@@ -8,7 +8,7 @@ let deck, discardPile, turn, isWinner
 let yesBtn = document.querySelector("#yes-button")
 let noBtn = document.querySelector("#no-button")
 let playArea = document.querySelector("#game-table")
-let welcomeScreen = document.querySelector(#opening-screen)
+let welcomeScreen = document.querySelector("#opening-screen")
 
 
 /** -------------- Event Listeners ------------------ */
@@ -17,7 +17,9 @@ yesBtn.addEventListener("click", letsPlay)
 
 /** --------------- Functions ----------------------- */
 function letsPlay() {
-  console.log("Yes is clicked")
+  welcomeScreen.hidden = true
+  playArea.hidden = false
+  playArea.style.backgroundColor = "#34969D"
 }
 
 /** ------------------ Psuedo Code ------------------ */
