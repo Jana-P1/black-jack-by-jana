@@ -80,3 +80,7 @@ h2 {
 main {
   margin: 0;
 }
+footer {
+  display: grid;
+  flex-direction: row;
+}

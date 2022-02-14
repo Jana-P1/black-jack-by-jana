@@ -4,7 +4,7 @@ const player = 1
 const dealer = -1
 
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, initialCardsPicked, cardsToRemove,playerHand, dealerHand  
+let discardPile, turn, isWinner, cardPicked, playerHand, dealerHand  
 let shuffledDeck = []
 let deck1 = []
 
@@ -15,7 +15,9 @@ let yesBtn = document.querySelector("#yes-button")
 let noBtn = document.querySelector("#no-button")
 let playArea = document.querySelector("body")
 let welcomeScreen = document.getElementById("opening-screen")
-let hitStayBtns = document.querySelector(".buttons")
+let footer = document.querySelector("footer")
+let hitBtn = document.querySelector("#hit-button")
+let stayBtn = document.querySelector("#stay-button")
 let table = document.querySelector("#game-table")
 let message = document.querySelector("#message")
 let dealerCard1 = document.querySelector("#dealer-card-1")
@@ -27,6 +29,8 @@ let playerCard2 = document.querySelector("#player-card-2")
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
+hitBtn.addEventListener("click", pickACard)
+
 
 
 /** --------------- Functions ----------------------- */
@@ -35,7 +39,7 @@ function letsPlay() {
   playArea.hidden = false
   playArea.style.backgroundColor = "#1A5E4A"
   table.hidden = false
-  hitStayBtns.hidden = false
+  footer.hidden = false
   init()
 }
 
@@ -51,13 +55,9 @@ function shuffle() {
     let randIdx = Math.floor(Math.random() * deck1.length)
     randCard = deck1.splice(randIdx, 1)[0]
     shuffledDeck.push(randCard)
-}
-console.log(shuffledDeck)
+  }
 } 
-
-
 function initialRender() {
-  console.log(shuffledDeck)
   playerHand = shuffledDeck.splice(0, 2)
   console.log(playerHand)
   for (let i = 0; i < playerHand.length; i++) {
@@ -74,6 +74,12 @@ function initialRender() {
     dealerCard2.classList.remove("outline")
     dealerCard2.classList.add(dealerHand[1])
   }
+}
+
+function pickACard() {
+  console.log("card is picked")
+  cardPicked = shuffledDeck.splice(0, 1)
+
 }
 
 
