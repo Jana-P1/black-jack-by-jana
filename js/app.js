@@ -18,10 +18,8 @@ let welcomeScreen = document.getElementById("opening-screen")
 let hitStayBtns = document.querySelector(".buttons")
 let table = document.querySelector("#game-table")
 let message = document.querySelector("#message")
-let playerContainer = document.querySelector(".player")
-let playerCards = document.getElementsByClassName("card large outline player")
-let dealerContainer = document.querySelector(".dealer")
-let dealerCards = document.getElementsByClassName("card large outline dealer")
+let dealerCard1 = document.querySelector("#dealer-card-1")
+let dealerCard2 = document.querySelector("#dealer-card-2")
 let playerCard1 = document.querySelector("#player-card-1")
 let playerCard2 = document.querySelector("#player-card-2")
 
@@ -43,8 +41,8 @@ function letsPlay() {
 
 function init() {
   deck1 = [...deck]
-  playerHand = [null, null, null, null, null]
-  dealerHand = [null, null, null, null, null]
+  // playerHand = [null, null, null, null, null]
+  // dealerHand = [null, null, null, null, null]
   shuffle()    
   initialRender()
 } 
@@ -57,16 +55,25 @@ function shuffle() {
 console.log(shuffledDeck)
 } 
 
+
 function initialRender() {
-    let initialCardsPicked = shuffledDeck.splice(shuffledDeck.legnth - 1, 2)[0]
-    for (let i = 0; i = playerHand.length; i++) {
-      playerHand.unshift(initialCardsPicked)
-      playerCard1.classList.remove("outline")
-      playerCard1.classList.add(initialCardsPicked)
-      playerCard2.classList.remove("outline")
-      playerCard2.classList.add(initialCardsPicked)
-  }
+  console.log(shuffledDeck)
+  playerHand = shuffledDeck.splice(0, 2)
   console.log(playerHand)
+  for (let i = 0; i < playerHand.length; i++) {
+    playerCard1.classList.remove("outline")
+    playerCard1.classList.add(playerHand[0])
+    playerCard2.classList.remove("outline")
+    playerCard2.classList.add(playerHand[1])
+  }
+  dealerHand = shuffledDeck.splice(0, 2)
+  console.log(dealerHand)
+  for (let i = 0; i < playerHand.length; i++) {
+    dealerCard1.classList.remove("outline")
+    dealerCard1.classList.add(dealerHand[0])
+    dealerCard2.classList.remove("outline")
+    dealerCard2.classList.add(dealerHand[1])
+  }
 }
 
 
