@@ -4,8 +4,7 @@ const player = 1
 const dealer = -1
 
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardsPicked, cardsToRemove,cardSelected  
-let playerHand = []
+let discardPile, turn, isWinner, cardsPicked, cardsToRemove,cardSelected, playerHand  
 let dealerHand = []
 let shuffledDeck = []
 let deck1 = []
@@ -58,11 +57,10 @@ function shuffle() {
 console.log(shuffledDeck)
 } 
 function firstDeal() {
+  playerHand = []
   // Pick a random card from shuffledDeck
   let randomIndex = Math.floor(Math.random() * shuffledDeck.length)
   cardsPicked = shuffledDeck.splice(randomIndex, 2)
-  // playerHand.push(cardPicked)
-  console.log(cardsPicked)
   initialRender()
 
   // Push this random card into playerHand array/dealerHand array
