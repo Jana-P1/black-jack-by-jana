@@ -70,16 +70,17 @@ function initialRender() {
   console.log(dealerHand)
   for (let i = 0; i < playerHand.length; i++) {
     dealerCard1.classList.remove("outline")
-    dealerCard1.classList.add(dealerHand[0])
+    dealerCard1.classList.add("back-red")
     dealerCard2.classList.remove("outline")
     dealerCard2.classList.add(dealerHand[1])
   }
 }
 
 function pickACard() {
-  console.log("card is picked")
-  cardPicked = shuffledDeck.splice(0, 1)
-
+  render()
+}
+function render() {
+  console.log("render invoked")
 }
 
 
