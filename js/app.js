@@ -79,15 +79,22 @@ function initialRender() {
 }
 
 function pickACard() {
-  
+  // add card from shuffledDeck array to playerHand
+  // find total value of the cards in the playerHand
   render()
 }
 function render() {
   console.log("render invoked")
+  // display picked card in player area
 }
 
 function findHandValues() {
   console.log("find hand values function written")
+}
+function clickStayBtn() {
+  console.log("Player stays")
+  //  
+
 }
 
 
