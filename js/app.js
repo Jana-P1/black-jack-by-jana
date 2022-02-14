@@ -4,7 +4,7 @@ const player = 1
 const dealer = -1
 
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardPicked, cardsToRemove,cardSelected  
+let discardPile, turn, isWinner, cardsPicked, cardsToRemove,cardSelected  
 let playerHand = []
 let dealerHand = []
 let shuffledDeck = []
@@ -19,6 +19,11 @@ let welcomeScreen = document.getElementById("opening-screen")
 let hitStayBtns = document.querySelector(".buttons")
 let table = document.querySelector("#game-table")
 let message = document.querySelector("#message")
+let playerCard1 = document.querySelector("#player-card-1")
+let playerCard2 = document.querySelector("#player-card-2")
+let playerCard3 = document.querySelector("#player-card-3")
+let playerCard4 = document.querySelector("#player-card-4")
+let playerCard5 = document.querySelector("#player-card-5")
 
 
 /** -------------- Event Listeners ------------------ */
@@ -43,7 +48,6 @@ function init() {
   // initialRender()
   // dealerRender()
   firstDeal()
-  render()
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -56,7 +60,10 @@ console.log(shuffledDeck)
 function firstDeal() {
   // Pick a random card from shuffledDeck
   let randomIndex = Math.floor(Math.random() * shuffledDeck.length)
-  cardPicked = shuffledDeck.splice(randomIndex, 1)[0]
+  cardsPicked = shuffledDeck.splice(randomIndex, 2)
+  // playerHand.push(cardPicked)
+  console.log(cardsPicked)
+  initialRender()
 
   // Push this random card into playerHand array/dealerHand array
   // remove selected card from deck1
@@ -70,8 +77,14 @@ function nextTurn() {
     message.textContent = "Player, it's your turn"
   }
 }
-function render() {
-  
+function initialRender() {
+  playerCard1.classList.remove("outline")
+  playerCard1.classList.add(cardsPicked[0])
+  playerCard2.classList.remove("outline")
+  playerCard2.classList.add(cardsPicked[1])
+  // Remove the outlines from the div in HTML
+  // Remove cardPicked from deck1 so that when cards are picked again, the cardPicked are not chosen again
+  // Add the cardPicked to the appropriate div
 }
 
 
