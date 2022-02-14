@@ -79,7 +79,7 @@ function initialRender() {
 }
 
 function pickACard() {
-
+  
   render()
 }
 function render() {
