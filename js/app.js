@@ -1,5 +1,8 @@
 /** ----------------- Constants ----------------------- */
 const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
+const player = 1
+const dealer = -1
+
 /** ----------------- Variables ------------------------*/
 let discardPile, turn, isWinner, cardsPicked, cardsToRemove,cardSelected  
 let playerHand = []
@@ -11,11 +14,11 @@ let deck1 = []
 /** ------------- Cached Element References --------- */
 let yesBtn = document.querySelector("#yes-button")
 let noBtn = document.querySelector("#no-button")
-let playArea = document.querySelector("#game-table")
-let welcomeScreen = document.querySelector("#opening-screen")
-let playerCards = document.querySelectorAll(".player hand > div")
-let dealerCards = document.querySelectorAll(".dealer hand > div")
-onePlayerCard = document.getElementById("player-card-1")
+let playArea = document.querySelector("body")
+let welcomeScreen = document.getElementById("opening-screen")
+let hitStayBtns = document.querySelector(".buttons")
+let table = document.querySelector("#game-table")
+
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
@@ -26,6 +29,9 @@ function letsPlay() {
   welcomeScreen.hidden = true
   playArea.hidden = false
   playArea.style.backgroundColor = "#1A5E4A"
+  table.hidden = false
+  hitStayBtns.hidden = false
+
   init()
 }
 
@@ -36,6 +42,7 @@ function init() {
   // initializeDealerHand()
   // initialRender()
   // dealerRender()
+  initializeHands()
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -46,21 +53,18 @@ function shuffle() {
 console.log(shuffledDeck)
 } 
 function initializeHands() {
-  console.log("first cards are dealt")
+  // Pick a random card from shuffledDeck
+  // Push this random card into playerHand array/dealerHand array
+  // remove selected card from deck1
+  // Invoke render
 }
-// function initializeDealerHand() {
-//   pickRandCard()
-//   dealerHand.push(cardsPicked)
-//   console.log(dealerHand)
-// }
+function nextTurn() {
+  turn *= -1
+  if(turn === -1) {
 
-// function initialRender() {
-//   console.log("flip these cards")
-// }
+  }
+}
 
-// function dealerRender() {
-//   console.log("flip these cards")
-// }
 
 /** ------------------ Psuedo Code ------------------ */
 /** Start game function 
