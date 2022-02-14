@@ -58,21 +58,15 @@ console.log(shuffledDeck)
 } 
 
 function initialRender() {
-    let initialCardsPicked = shuffledDeck.splice(shuffledDeck.legnth - 1)[0]
-    for (let i = 0; i < 1; i++) {
+    let initialCardsPicked = shuffledDeck.splice(shuffledDeck.legnth - 1, 2)[0]
+    for (let i = 0; i = playerHand.length; i++) {
       playerHand.unshift(initialCardsPicked)
       playerCard1.classList.remove("outline")
       playerCard1.classList.add(initialCardsPicked)
+      playerCard2.classList.remove("outline")
+      playerCard2.classList.add(initialCardsPicked)
   }
-
-
   console.log(playerHand)
-  
-  // console.log(playerHand)
-  // for(let i = 0; i < playerHand.length; i++){
-  //   playerCards.classList.remove("outline")
-  //   playerCards.classList.add(initialCardsPicked[i])
-  // } 
 }
 
 
