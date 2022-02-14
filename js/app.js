@@ -22,8 +22,8 @@ let playerContainer = document.querySelector(".player")
 let playerCards = document.getElementsByClassName("card large outline player")
 let dealerContainer = document.querySelector(".dealer")
 let dealerCards = document.getElementsByClassName("card large outline dealer")
-let playerCard1 = document.querySelector("#dealer-card-1")
-let playerCard2 = document.querySelector("#dealer-card-2")
+let playerCard1 = document.querySelector("#player-card-1")
+let playerCard2 = document.querySelector("#player-card-2")
 
 
 
@@ -46,7 +46,7 @@ function init() {
   playerHand = [null, null, null, null, null]
   dealerHand = [null, null, null, null, null]
   shuffle()    
-  initialDeal()
+  initialRender()
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -56,26 +56,23 @@ function shuffle() {
 }
 console.log(shuffledDeck)
 } 
-function initialDeal() {
-  // Pick a random card from shuffledDeck
-  let randomIndex = Math.floor(Math.random() * shuffledDeck.length)
-  let initialCardsPicked = shuffledDeck.splice(randomIndex, 4)
-  initialPlayerRender()
-  return initialCardsPicked
-  // Push this random card into playerHand array/dealerHand array
-  // remove selected card from deck1
-  // Invoke render
-}
-function nextTurn() {
-  turn *= -1
-  if(turn === -1) {
-    message.textContent = "It's the dealer's turn"
-  } else {
-    message.textContent = "Player, it's your turn"
+
+function initialRender() {
+    let initialCardsPicked = shuffledDeck.splice(shuffledDeck.legnth - 1)[0]
+    for (let i = 0; i < 1; i++) {
+      playerHand.unshift(initialCardsPicked)
+      playerCard1.classList.remove("outline")
+      playerCard1.classList.add(initialCardsPicked)
   }
-}
-function initialPlayerRender() {
-  playerHand = 
+
+
+  console.log(playerHand)
+  
+  // console.log(playerHand)
+  // for(let i = 0; i < playerHand.length; i++){
+  //   playerCards.classList.remove("outline")
+  //   playerCards.classList.add(initialCardsPicked[i])
+  // } 
 }
 
 
