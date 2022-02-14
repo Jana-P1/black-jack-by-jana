@@ -4,7 +4,7 @@ const player = 1
 const dealer = -1
 
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardsPicked, cardsToRemove,cardSelected  
+let discardPile, turn, isWinner, cardPicked, cardsToRemove,cardSelected  
 let playerHand = []
 let dealerHand = []
 let shuffledDeck = []
@@ -18,6 +18,7 @@ let playArea = document.querySelector("body")
 let welcomeScreen = document.getElementById("opening-screen")
 let hitStayBtns = document.querySelector(".buttons")
 let table = document.querySelector("#game-table")
+let message = document.querySelector("#message")
 
 
 /** -------------- Event Listeners ------------------ */
@@ -31,7 +32,6 @@ function letsPlay() {
   playArea.style.backgroundColor = "#1A5E4A"
   table.hidden = false
   hitStayBtns.hidden = false
-
   init()
 }
 
@@ -42,7 +42,8 @@ function init() {
   // initializeDealerHand()
   // initialRender()
   // dealerRender()
-  initializeHands()
+  firstDeal()
+  render()
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -52,8 +53,11 @@ function shuffle() {
 }
 console.log(shuffledDeck)
 } 
-function initializeHands() {
+function firstDeal() {
   // Pick a random card from shuffledDeck
+  let randomIndex = Math.floor(Math.random() * shuffledDeck.length)
+  cardPicked = shuffledDeck.splice(randomIndex, 1)[0]
+
   // Push this random card into playerHand array/dealerHand array
   // remove selected card from deck1
   // Invoke render
@@ -61,8 +65,13 @@ function initializeHands() {
 function nextTurn() {
   turn *= -1
   if(turn === -1) {
-
+    message.textContent = "It's the dealer's turn"
+  } else {
+    message.textContent = "Player, it's your turn"
   }
+}
+function render() {
+  
 }
 
 
