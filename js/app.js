@@ -4,7 +4,7 @@ const player = 1
 const dealer = -1
 
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardsPicked, cardsToRemove,playerHand, dealerHand  
+let discardPile, turn, isWinner, initialCardsPicked, cardsToRemove,playerHand, dealerHand  
 let shuffledDeck = []
 let deck1 = []
 
@@ -18,11 +18,13 @@ let welcomeScreen = document.getElementById("opening-screen")
 let hitStayBtns = document.querySelector(".buttons")
 let table = document.querySelector("#game-table")
 let message = document.querySelector("#message")
-let playerCard1 = document.querySelector("#player-card-1")
-let playerCard2 = document.querySelector("#player-card-2")
-let playerCard3 = document.querySelector("#player-card-3")
-let playerCard4 = document.querySelector("#player-card-4")
-let playerCard5 = document.querySelector("#player-card-5")
+let playerContainer = document.querySelector(".player")
+let playerCards = document.getElementsByClassName("card large outline player")
+let dealerContainer = document.querySelector(".dealer")
+let dealerCards = document.getElementsByClassName("card large outline dealer")
+let playerCard1 = document.querySelector("#dealer-card-1")
+let playerCard2 = document.querySelector("#dealer-card-2")
+
 
 
 /** -------------- Event Listeners ------------------ */
@@ -41,14 +43,10 @@ function letsPlay() {
 
 function init() {
   deck1 = [...deck]
+  playerHand = [null, null, null, null, null]
+  dealerHand = [null, null, null, null, null]
   shuffle()    
-  // initializePlayerHand()
-  // initializeDealerHand()
-  // initialRender()
-  // dealerRender()
-  deal()
-  playerHand = []
-  dealerHand = []
+  initialDeal()
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -58,13 +56,12 @@ function shuffle() {
 }
 console.log(shuffledDeck)
 } 
-function deal() {
-  playerHand = []
+function initialDeal() {
   // Pick a random card from shuffledDeck
   let randomIndex = Math.floor(Math.random() * shuffledDeck.length)
-  cardsPicked = shuffledDeck.splice(randomIndex, 2)
-  render()
-  return cardsPicked
+  let initialCardsPicked = shuffledDeck.splice(randomIndex, 4)
+  initialPlayerRender()
+  return initialCardsPicked
   // Push this random card into playerHand array/dealerHand array
   // remove selected card from deck1
   // Invoke render
@@ -77,15 +74,8 @@ function nextTurn() {
     message.textContent = "Player, it's your turn"
   }
 }
-function render() {
-  playerHand = cardsPicked
-  
-  console.log(playerHand)
-  playerCard1.classList.remove("outline")
-  playerCard1.classList.add(playerHand[0])
-  playerCard2.classList.remove("outline")
-  playerCard2.classList.add(playerHand[1])
-  
+function initialPlayerRender() {
+  playerHand = 
 }
 
 
