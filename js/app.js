@@ -4,10 +4,10 @@ const player = 1
 const dealer = -1
 
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardsPicked, cardsToRemove,cardSelected, playerHand  
-let dealerHand = []
+let discardPile, turn, isWinner, cardsPicked, cardsToRemove,playerHand, dealerHand  
 let shuffledDeck = []
 let deck1 = []
+
 
 
 /** ------------- Cached Element References --------- */
@@ -46,7 +46,9 @@ function init() {
   // initializeDealerHand()
   // initialRender()
   // dealerRender()
-  firstDeal()
+  deal()
+  playerHand = []
+  dealerHand = []
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -56,13 +58,13 @@ function shuffle() {
 }
 console.log(shuffledDeck)
 } 
-function firstDeal() {
+function deal() {
   playerHand = []
   // Pick a random card from shuffledDeck
   let randomIndex = Math.floor(Math.random() * shuffledDeck.length)
   cardsPicked = shuffledDeck.splice(randomIndex, 2)
-  initialRender()
-
+  render()
+  return cardsPicked
   // Push this random card into playerHand array/dealerHand array
   // remove selected card from deck1
   // Invoke render
@@ -75,14 +77,15 @@ function nextTurn() {
     message.textContent = "Player, it's your turn"
   }
 }
-function initialRender() {
+function render() {
+  playerHand = cardsPicked
+  
+  console.log(playerHand)
   playerCard1.classList.remove("outline")
-  playerCard1.classList.add(cardsPicked[0])
+  playerCard1.classList.add(playerHand[0])
   playerCard2.classList.remove("outline")
-  playerCard2.classList.add(cardsPicked[1])
-  // Remove the outlines from the div in HTML
-  // Remove cardPicked from deck1 so that when cards are picked again, the cardPicked are not chosen again
-  // Add the cardPicked to the appropriate div
+  playerCard2.classList.add(playerHand[1])
+  
 }
 
 
