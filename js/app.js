@@ -90,7 +90,6 @@ function pickACard() {
   playerHand.push(newCard)
   console.log("playerHand: ", playerHand)
   render()
-  
 }
 function render() {
   const playerDiv = document.createElement("div")
@@ -104,32 +103,45 @@ function clickStayBtn() {
   // flip over first dealer card
   dealerCard1.classList.remove("back-red")
   dealerCard1.classList.add(dealerHand[0])
+  dealerRender()
   // find total of dealer hand
     // if total <= 16 {
       // draw another card
     // if total is > 16 {
       // compare the player total with dealer total
-  }
-    
   
-
+}
+    
 function dealerRender() {
   const dealerDiv = document.createElement("div")
+  newDealerCard = 
   dealerDiv.classList.add("card", "large", newDealerCard) 
   dealerArea.appendChild(dealerDiv)
-
+  findHandValue(playerHand)
+  getWinner()
+}
+function findHandValue(arr) {
+  let total = 0
+  for (let i = 0; i < arr.length; i++) {
+    for (let key in cardValues) {
+    }
+    total = total + cardValues[arr[i]]
+  }
+  console.log("total: ", total)
+  // find the total of player hand
+    // define variable for playerTotal
+    // use forEach method to loop through each card
+    // use the cardValues object to find the assigned value of the card
+    // add the total of the cards
+  // find the total of the dealer hand
+    // define variable for dealerTotal
 }
 
-// function findHandValues() {
-//   console.log("score")
-// }
-// function clickStayBtn() {
-//   let dealerCardPicked = shuffledDeck.splice(0, 1)
-//   newDealerCard = dealerCardPicked.join()
-//   dealerHand.push(newDealerCard)
-//   dealerArea.appendChild(dealerDiv)
-//   dealerRender()
 
+function getWinner() {
+  console.log("winner!")
+  
+}
 // }
 // function dealerRender() {
 //   dealerCard1.classList.remove("back-red")
