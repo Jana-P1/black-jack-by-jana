@@ -6,7 +6,7 @@ const cardValues = {
   "dA": 1, "dQ": 10, "dK": 10, "dJ": 10,"d10": 10, "d09": 9, "d08": 8, "d07":7,"d06": 6, "d05": 5,"d04": 4,"d03": 3, "d02": 2, "hA": 1, "hQ": 10, "hK": 10, "hJ": 10, "h10": 10, "h09": 9, "h08": 8, "h07": 7, "h06": 6, "h05": 5, "h04": 4, "h03": 3, "h02": 2, "cA": 1, "cQ": 10, "cK": 10, "cJ": 10, "c10": 10, "c09": 9, "c08": 8, "c07": 7, "c06": 6, "c05": 5, "c04": 4, "c03": 3, "c02": 2, "sA": 1, "sQ": 10, "sK": 10, "sJ": 10, "s10": 10, "s09": 9, "s08": 8, "s07": 7, "s06": 6,"s05": 5, "s04": 4, "s03": 3, "s02": 2
 }
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardPicked, playerHand, dealerHand  
+let discardPile, turn, isWinner, cardPicked, playerHand, dealerHand, newDealerCard, newCard  
 let shuffledDeck = []
 let deck1 = []
 
@@ -28,12 +28,15 @@ let playerCard1 = document.querySelector("#player-card-1")
 let playerCard2 = document.querySelector("#player-card-2")
 let dealerArea = document.querySelector(".dealer")
 let playerArea = document.querySelector(".player")
+let playerDiv = document.createElement("div")
+let dealerDiv = document.createElement("div")
 
 
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
-hitBtn.addEventListener("click", render)
+hitBtn.addEventListener("click", pickACard)
+// stayBtn.addEventListener("click", clickStayBtn)
 
 
 
@@ -80,40 +83,37 @@ function initialRender() {
   }
 }
 
-// function pickACard() {
-//   cardPicked = shuffledDeck.splice(0, 1)
-//   newCard = cardPicked.join()
-//   playerHand.push(newCard)
-//   console.log(playerHand)
-//   render()
-// }
-function render() {
+function pickACard() {
   cardPicked = shuffledDeck.splice(0, 1)
   newCard = cardPicked.join()
   playerHand.push(newCard)
   console.log(playerHand)
-  const div = document.createElement("div")
-  playerArea.appendChild(div)
-  div.classList.add("card")
-  div.classList.add("large")
-  div.classList.add(newCard)
-
-
+  render()
+}
+function render() {
+  playerArea.appendChild(playerDiv)
+  playerDiv.classList.add("card", "large", newCard)
   
-  
-  // use append child method to append div to playerArea
-    // remove outline
-    // add newCard
 }
 
-function findHandValues() {
-  console.log("score")
-}
-function clickStayBtn() {
-  console.log("Player stays")
-  //  
+// function findHandValues() {
+//   console.log("score")
+// }
+// function clickStayBtn() {
+//   let dealerCardPicked = shuffledDeck.splice(0, 1)
+//   newDealerCard = dealerCardPicked.join()
+//   dealerHand.push(newDealerCard)
+//   dealerArea.appendChild(dealerDiv)
+//   dealerRender()
 
-}
+// }
+// function dealerRender() {
+//   dealerCard1.classList.remove("back-red")
+//   dealerCard1.classList.add(dealerHand[0])
+//   dealerDiv.classList.add("card", "large", newDealerCard)
+
+//   console.log("Dealer show your hand")
+// }
 
 
 /** ------------------ Psuedo Code ------------------ */
