@@ -6,7 +6,7 @@ const cardValues = {
   "dA": 1, "dQ": 10, "dK": 10, "dJ": 10,"d10": 10, "d09": 9, "d08": 8, "d07":7,"d06": 6, "d05": 5,"d04": 4,"d03": 3, "d02": 2, "hA": 1, "hQ": 10, "hK": 10, "hJ": 10, "h10": 10, "h09": 9, "h08": 8, "h07": 7, "h06": 6, "h05": 5, "h04": 4, "h03": 3, "h02": 2, "cA": 1, "cQ": 10, "cK": 10, "cJ": 10, "c10": 10, "c09": 9, "c08": 8, "c07": 7, "c06": 6, "c05": 5, "c04": 4, "c03": 3, "c02": 2, "sA": 1, "sQ": 10, "sK": 10, "sJ": 10, "s10": 10, "s09": 9, "s08": 8, "s07": 7, "s06": 6,"s05": 5, "s04": 4, "s03": 3, "s02": 2
 }
 /** ----------------- Variables ------------------------*/
-let discardPile, turn, isWinner, cardPicked, playerHand, dealerHand, newDealerCard, newCard  
+let discardPile, turn, isWinner, playerHand, dealerHand, newDealerCard, newCard  
 let shuffledDeck = []
 let deck1 = []
 
@@ -28,15 +28,15 @@ let playerCard1 = document.querySelector("#player-card-1")
 let playerCard2 = document.querySelector("#player-card-2")
 let dealerArea = document.querySelector(".dealer")
 let playerArea = document.querySelector(".player")
-// let playerDiv = document.createElement("div")
-let dealerDiv = document.createElement("div")
+
+
 
 
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
 hitBtn.addEventListener("click", pickACard)
-// stayBtn.addEventListener("click", clickStayBtn)
+stayBtn.addEventListener("click", clickStayBtn)
 
 
 
@@ -84,7 +84,7 @@ function initialRender() {
 }
 
 function pickACard() {
-  cardPicked = shuffledDeck.splice(0, 1)
+  const cardPicked = shuffledDeck.splice(0, 1)
   newCard = cardPicked.join()
   console.log("newCard: ", newCard)
   playerHand.push(newCard)
@@ -100,8 +100,24 @@ function render() {
   console.log("playerArea: ", playerArea)
 }
 
+function clickStayBtn() {
+  // flip over first dealer card
+  dealerCard1.classList.remove("back-red")
+  dealerCard1.classList.add(dealerHand[0])
+  // find total of dealer hand
+    // if total <= 16 {
+      // draw another card
+    // if total is > 16 {
+      // compare the player total with dealer total
+  }
+    
+  
+
 function dealerRender() {
-  console.log("here")
+  const dealerDiv = document.createElement("div")
+  dealerDiv.classList.add("card", "large", newDealerCard) 
+  dealerArea.appendChild(dealerDiv)
+
 }
 
 // function findHandValues() {
