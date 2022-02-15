@@ -103,7 +103,9 @@ function clickStayBtn() {
   // flip over first dealer card
   dealerCard1.classList.remove("back-red")
   dealerCard1.classList.add(dealerHand[0])
-  dealerRender()
+  findHandValue(playerHand)
+  findHandValue(dealerHand)
+  // dealerRender()
   // find total of dealer hand
     // if total <= 16 {
       // draw another card
@@ -117,24 +119,17 @@ function dealerRender() {
   newDealerCard = 
   dealerDiv.classList.add("card", "large", newDealerCard) 
   dealerArea.appendChild(dealerDiv)
-  findHandValue(playerHand)
+  
   getWinner()
 }
 function findHandValue(arr) {
-  let total = 0
+  total = 0
   for (let i = 0; i < arr.length; i++) {
     for (let key in cardValues) {
     }
     total = total + cardValues[arr[i]]
   }
   console.log("total: ", total)
-  // find the total of player hand
-    // define variable for playerTotal
-    // use forEach method to loop through each card
-    // use the cardValues object to find the assigned value of the card
-    // add the total of the cards
-  // find the total of the dealer hand
-    // define variable for dealerTotal
 }
 
 
