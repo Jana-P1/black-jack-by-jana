@@ -28,7 +28,7 @@ let playerCard1 = document.querySelector("#player-card-1")
 let playerCard2 = document.querySelector("#player-card-2")
 let dealerArea = document.querySelector(".dealer")
 let playerArea = document.querySelector(".player")
-let playerDiv = document.createElement("div")
+// let playerDiv = document.createElement("div")
 let dealerDiv = document.createElement("div")
 
 
@@ -86,14 +86,22 @@ function initialRender() {
 function pickACard() {
   cardPicked = shuffledDeck.splice(0, 1)
   newCard = cardPicked.join()
+  console.log("newCard: ", newCard)
   playerHand.push(newCard)
-  console.log(playerHand)
+  console.log("playerHand: ", playerHand)
   render()
+  
 }
 function render() {
-  playerArea.appendChild(playerDiv)
+  const playerDiv = document.createElement("div")
   playerDiv.classList.add("card", "large", newCard)
-  
+  console.log("playDiv: ", playerDiv)
+  playerArea.appendChild(playerDiv)
+  console.log("playerArea: ", playerArea)
+}
+
+function dealerRender() {
+  console.log("here")
 }
 
 // function findHandValues() {
