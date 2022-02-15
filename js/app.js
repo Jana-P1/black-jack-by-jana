@@ -26,12 +26,14 @@ let dealerCard1 = document.querySelector("#dealer-card-1")
 let dealerCard2 = document.querySelector("#dealer-card-2")
 let playerCard1 = document.querySelector("#player-card-1")
 let playerCard2 = document.querySelector("#player-card-2")
+let dealerArea = document.querySelector(".dealer")
+let playerArea = document.querySelector(".player")
 
 
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
-hitBtn.addEventListener("click", pickACard)
+hitBtn.addEventListener("click", render)
 
 
 
@@ -78,18 +80,34 @@ function initialRender() {
   }
 }
 
-function pickACard() {
-  // add card from shuffledDeck array to playerHand
-  // find total value of the cards in the playerHand
-  render()
-}
+// function pickACard() {
+//   cardPicked = shuffledDeck.splice(0, 1)
+//   newCard = cardPicked.join()
+//   playerHand.push(newCard)
+//   console.log(playerHand)
+//   render()
+// }
 function render() {
-  console.log("render invoked")
-  // display picked card in player area
+  cardPicked = shuffledDeck.splice(0, 1)
+  newCard = cardPicked.join()
+  playerHand.push(newCard)
+  console.log(playerHand)
+  const div = document.createElement("div")
+  playerArea.appendChild(div)
+  div.classList.add("card")
+  div.classList.add("large")
+  div.classList.add(newCard)
+
+
+  
+  
+  // use append child method to append div to playerArea
+    // remove outline
+    // add newCard
 }
 
 function findHandValues() {
-  console.log("find hand values function written")
+  console.log("score")
 }
 function clickStayBtn() {
   console.log("Player stays")
