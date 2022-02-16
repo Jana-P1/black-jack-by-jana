@@ -38,7 +38,8 @@ stayBtn.addEventListener("click", clickStayBtn)
 function letsPlay() {
   welcomeScreen.hidden = true
   playArea.hidden = false
-  playArea.style.backgroundColor = "#1A5E4A"
+  playArea.style.backgroundImage = "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,232,0.8043811274509804) 50%, rgba(252,176,69,1) 100%)"
+  
   table.hidden = false
   footer.hidden = false
   init()
@@ -115,13 +116,15 @@ function clickStayBtn() {
 function dealerRender() {
   const cardPicked = shuffledDeck.splice(0, 1)
   const dealerDiv = document.createElement("div")
-  if (dealerTotal <= 16) {
+  while (dealerTotal <= 16) {
     newDealerCard = cardPicked
+    dealerHand.push(newDealerCard)
     newDealerCard = dealerDiv.classList.add("card", "large", newDealerCard) 
     dealerArea.appendChild(dealerDiv)
-  } else {
-    getWinner()
-  }
+    findHandValue()
+    break
+  } 
+  getWinner()
   findHandValue()
   // } 
   // if(dealerTotal > 16) {

@@ -20,8 +20,9 @@ body {
 /* Use a system font, if none are available use an available sans-sarif   font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  margin: 0;
+  margin: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: black;
@@ -59,14 +60,20 @@ body {
 .gametitle {
   font-size: 2.4rem;
   font-weight: bold;
+  text-align: center;
 }
 #opening-screen {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   color: white;
-
 }
+#welcome {
+  text-align: center;
+  padding: 10px;
+}
+
 p {
   color: white
 }
@@ -78,15 +85,50 @@ h2 {
   font-size: 3.0rem;
 }
 main {
-  display: grid;
+  display: grid; 
+  grid-template-columns: 100%;
+  grid-template-rows: 33% 33% 33%;
   margin: 0;
   border: 2px solid red;
   height: 100%;
   width: 100%;
-  padding: 5%;
+  padding: 0;
+  grid-template-areas: 
+  "dealer"
+  "house"
+  "player";
+}
+.dealer {
+  grid-area: dealer;
+  width: 100%;
+  padding: 30px 0 20px 10px;
+  border: 2px solid red;
+}
+.dealer > div {
+  margin: 0;
+  padding: 10px;
+}
+.house {
+  grid-area: house; 
+  border: 2px solid red;
+  padding: 0px;
+}
+.player {
+  grid-area: player;
+  margin: 0;
+  border: 2px solid red;
+  height: 100%;
+  width: 100%;
+  padding: 0; 
+}
+.player > div {
+  padding: 0;
+}
+footer, aside {
+  display: grid;
+  height: 30%;
+  border: 2px solid red;
 }
 footer {
-  display: flex;
-  height: 100%;
-  border: 2px solid red;
+  padding: 0;
 }
