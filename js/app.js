@@ -38,7 +38,7 @@ stayBtn.addEventListener("click", clickStayBtn)
 function letsPlay() {
   welcomeScreen.hidden = true
   playArea.hidden = false
-  playArea.style.backgroundImage = "linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,232,0.8043811274509804) 50%, rgba(252,176,69,1) 100%)"
+  playArea.style.backgroundImage = "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,66,121,0.5074623599439776) 56%, rgba(0,212,255,1) 100%)"
   
   table.hidden = false
   footer.hidden = false
