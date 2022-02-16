@@ -63,13 +63,7 @@ function shuffle() {
   }
 } 
 function replay() {
-  if(isWinner !== null) {
-    console.log("play again?")
-    hitBtn.hidden = true
-    stayBtn.hidden = true
-    resetBtn.hidden = false
-    init()
-      }
+  init()
 }
 
 function initialRender() {
