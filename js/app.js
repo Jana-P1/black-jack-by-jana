@@ -38,7 +38,7 @@ stayBtn.addEventListener("click", clickStayBtn)
 function letsPlay() {
   welcomeScreen.hidden = true
   playArea.hidden = false
-  playArea.style.backgroundImage = "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,66,121,0.5074623599439776) 56%, rgba(0,212,255,1) 100%)"
+  playArea.style.backgroundImage = "linear-gradient(319deg, rgba(2,0,36,1) 0%, rgba(0,2,4,0.900462962962963) 55%, rgba(231,230,219,1) 100%)"
   
   table.hidden = false
   footer.hidden = false
@@ -106,32 +106,24 @@ function clickStayBtn() {
   dealerCard1.classList.add(dealerHand[0])
   message2.hidden = false
   findHandValue()
+  message2.hidden = false
   message2.textContent=`Dealer hand: ${dealerTotal}`
-  dealerRender()
+  // dealerRender()
   //   console.log("dealer's hand is greater than 16")
   //   getWinner()
   // }
 }
+
     
 function dealerRender() {
   const cardPicked = shuffledDeck.splice(0, 1)
   const dealerDiv = document.createElement("div")
-  while (dealerTotal <= 16) {
-    newDealerCard = cardPicked
-    dealerHand.push(newDealerCard)
-    newDealerCard = dealerDiv.classList.add("card", "large", newDealerCard) 
-    dealerArea.appendChild(dealerDiv)
-    findHandValue()
-    break
+  newDealerCard = cardPicked
+  dealerHand.push(newDealerCard)
+  newDealerCard = dealerDiv.classList.add("card", "large", newDealerCard) 
+  dealerArea.appendChild(dealerDiv)
   } 
-  getWinner()
-  findHandValue()
-  // } 
-  // if(dealerTotal > 16) {
-  //   console.log("The dealer's total is: ", dealerTotal)
-  //   getWinner()
-  // }
-}
+  
 function findHandValue() {
   playerTotal = 0
   dealerTotal = 0
@@ -151,9 +143,17 @@ function findHandValue() {
 
 
 function getWinner() {
-  console.log("winner!")
-  
-}
+  // compare playerTotal to dealerTotal
+    // if(playerTotal === 21 && dealerTotal !== 21)
+      // isWinner = 1
+      // change message indicating that the player won
+    // if(dealerTotal === 21 & playerTotal !== 21)
+      // isWinner = -1
+      // change message indicating that the dealer won
+    // if (dealerTotal => 17) 
+
+    }
+
 
 
 /** ------------------ Psuedo Code ------------------ */
