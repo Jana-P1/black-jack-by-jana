@@ -62,6 +62,16 @@ function shuffle() {
     shuffledDeck.push(randCard)
   }
 } 
+function replay() {
+  if(isWinner !== null) {
+    console.log("play again?")
+    hitBtn.hidden = true
+    stayBtn.hidden = true
+    resetBtn.hidden = false
+    init()
+      }
+}
+
 function initialRender() {
   playerHand = shuffledDeck.splice(0, 2)
   console.log(playerHand)
@@ -176,15 +186,6 @@ function getWinner() {
     message1.textContent = "It's a bust! The house wins"
   }
     }
-function replay() {
-  if(isWinner !== null) {
-    console.log("play again?")
-    hitBtn.hidden = true
-    stayBtn.hidden = true
-    resetBtn.hidden = false
-    init()
-      }
-}
 
 
 /** ------------------ Psuedo Code ------------------ */
