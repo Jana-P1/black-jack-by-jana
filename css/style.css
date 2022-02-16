@@ -20,13 +20,14 @@ body {
 /* Use a system font, if none are available use an available sans-sarif   font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  margin: 10px;
+  margin: 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: black;
   height: 100vh;
+  padding: 0;
 }
 
 .button {
@@ -49,11 +50,14 @@ body {
 }
 
 #hit-button {
-  background-color: #FF8A44;
+  background-color: #d4af37;
+}
+#hit-button:hover {
+  animation: sparkle 5s;
 }
 
 #stay-button {
-  background-color: #BBEB7D;
+  background-color: silver;
   color: black;
 }
 
@@ -74,8 +78,11 @@ body {
   padding: 10px;
 }
 
-p {
-  color: white
+.gametitle {
+  color: #FC0419;
+  font-family: "dancing script";
+  font-size: 50px;
+  font-weight: bold;
 }
 
 h1 {
@@ -88,7 +95,7 @@ main {
   display: grid; 
   grid-template-columns: 100%;
   grid-template-rows: 33% 33% 33%;
-  margin: 0;
+  margin: 10px 0 0 5px;
   border: 2px solid red;
   height: 100%;
   width: 100%;
@@ -109,26 +116,50 @@ main {
   padding: 10px;
 }
 .house {
-  grid-area: house; 
+  grid-area: house;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 2px solid red;
   padding: 0px;
+}
+
+.game {
+  display: flex;
+  grid-template-columns: 10% 30% 30% 10%;
+  grid-template-rows: ;
+  grid-area: 
+  "message-2"
+  "deck" "discard-pile"
+  "message-1";
 }
 .player {
   grid-area: player;
   margin: 0;
   border: 2px solid red;
-  height: 100%;
   width: 100%;
-  padding: 0; 
+  padding: 30px 0 20px 10px; 
 }
 .player > div {
-  padding: 0;
+  padding: 10px;
+  margin: 0;
 }
-footer, aside {
+footer{
   display: grid;
   height: 30%;
   border: 2px solid red;
 }
 footer {
   padding: 0;
+}
+#message-1 {
+  border: 2px solid red;
+  color: white;
+  grid-area: message-1
+}
+#message-2 {
+  border: 2px solid red;
+}
+#deck {
+  grid-area: deck
 }

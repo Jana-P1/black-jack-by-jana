@@ -29,7 +29,7 @@ let playerArea = document.querySelector(".player")
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
-hitBtn.addEventListener("click", pickACard)
+hitBtn.addEventListener("click", playerPicks)
 stayBtn.addEventListener("click", clickStayBtn)
 
 
@@ -39,20 +39,19 @@ function letsPlay() {
   welcomeScreen.hidden = true
   playArea.hidden = false
   playArea.style.backgroundImage = "linear-gradient(319deg, rgba(2,0,36,1) 0%, rgba(0,2,4,0.900462962962963) 55%, rgba(231,230,219,1) 100%)"
-  
   table.hidden = false
   footer.hidden = false
+  message1.hidden = false
+  message2.hidden = false
   init()
 }
 
 function init() {
   deck1 = [...deck]
-  // playerHand = [null, null, null, null, null]
-  // dealerHand = [null, null, null, null, null]
-  shuffle()    
+  isWinner = null  
+  shuffle()  
   initialRender()
   findHandValue()
-  message1.hidden = false
   message1.textContent = `Player hand is ${playerTotal}`
 } 
 function shuffle() {
@@ -81,7 +80,7 @@ function initialRender() {
   }
 }
 
-function pickACard() {
+function playerPicks() {
   const cardPicked = shuffledDeck.splice(0, 1)
   newCard = cardPicked.join()
   console.log("newCard: ", newCard)
@@ -89,8 +88,6 @@ function pickACard() {
   findHandValue()
   message1.textContent = `Player hand is ${playerTotal}`
   render()
-  // if iswinner === true
-    // return => to not allow this button to be clicked 
 }
 function render() {
   const playerDiv = document.createElement("div")
@@ -104,8 +101,9 @@ function clickStayBtn() {
   // flip over first dealer card
   dealerCard1.classList.remove("back-red")
   dealerCard1.classList.add(dealerHand[0])
-  message2.hidden = false
+  message2.textContent = `The dealer's hand is: ${dealerTotal}`
   findHandValue()
+  getWinner()
   message2.hidden = false
   message2.textContent=`Dealer hand: ${dealerTotal}`
   // dealerRender()
@@ -113,7 +111,6 @@ function clickStayBtn() {
   //   getWinner()
   // }
 }
-
     
 function dealerRender() {
   const cardPicked = shuffledDeck.splice(0, 1)
@@ -122,8 +119,8 @@ function dealerRender() {
   dealerHand.push(newDealerCard)
   newDealerCard = dealerDiv.classList.add("card", "large", newDealerCard) 
   dealerArea.appendChild(dealerDiv)
+  findHandValue()
   } 
-  
 function findHandValue() {
   playerTotal = 0
   dealerTotal = 0
@@ -132,7 +129,6 @@ function findHandValue() {
     }
     playerTotal = playerTotal + cardValues[playerHand[i]]
   }
-  console.log("Player's total: ", playerTotal)
   for (let i = 0; i < dealerHand.length; i++) {
     for (let key in cardValues) {
     }
@@ -140,9 +136,44 @@ function findHandValue() {
   }
   console.log("Dealers's total: ", dealerTotal)
 }
-
-
 function getWinner() {
+  console.log("get winner invoked")
+  if (playerTotal === 21 && dealerTotal !== 21) {
+    console.log("Player wins")
+    isWinner = 1
+    message1.textContent = "Winner winner chicken dinner! You won"
+  } else if(dealerTotal === 21 && playerTotal !== 21) {
+    console.log("Dealer wins")
+    isWinner = -1
+    message1.textContent = "Always bet on the house. Better luck next time"
+    
+  } else if (dealerTotal < 17) {
+    console.log("more cards for the deal")
+    isWinner = null
+    dealerRender()
+
+  } else if (dealerTotal >= 17) {
+    console.log("let's compare")
+    findHandValue()
+    if(playerTotal < 21 && playerTotal > dealerTotal) {
+      console.log("Player wins")
+      isWinner = 1
+    } else if (playerTotal < 21 && playerTotal < dealerTotal) {
+      console.log("Dealer wins")
+      isWinner = 1
+    }
+  } else if (dealerTotal > 21 && playerTotal > 21) {
+    console.log("both busted")
+    isWinner = null
+  } else if (dealerTotal > 21) {
+    console.log("Dealer busted")
+    message1.textContent = "It's a bust. You win!"
+    console.log("It's a bust. You win!")
+  } else if (playerTotal > 21) {
+    console.log("Player busted")
+    message1.textContent = "It's a bust. You win!"
+  }
+
   // compare playerTotal to dealerTotal
     // if(playerTotal === 21 && dealerTotal !== 21)
       // isWinner = 1
@@ -154,7 +185,16 @@ function getWinner() {
 
     }
 
-
+// playing combos
+    // player gets 21 and dealer does not
+    // dealer gets 21 and dealer does not
+    // both get < 21 => draw
+    // player gets > 21 => dealer wins
+    // dealer gets > 21 => player wins
+// when to stop game and compare values
+    // if dealer hand > 17
+// when to deal more cards to dealer
+    // if dealer hand < 17
 
 /** ------------------ Psuedo Code ------------------ */
 /** Start game function 
@@ -184,5 +224,15 @@ function getWinner() {
  *          - Randomly selects number from the remaining cards in the deck
  *          - define variable set to the card that is picked
  *          - push that card to deck2, if discarded
- *           */
+ *        
+ * set a variable score
+loop through the hand
+set a variable number equal to the card value
+if number is greater than 10 set equal to 10
+add new number to total score
+Check for an ace
+set a variable for isThereAnAce to false
+loop through the deck and check to see if any cards are an ace if there is at least one set isThereAnAce to true
+Perform the logic
+if isThereAnAce equals true and the current score is less than 12 add 10 to the score   */
 
