@@ -27,10 +27,6 @@ let playerCard2 = document.querySelector("#player-card-2")
 let dealerArea = document.querySelector(".dealer")
 let playerArea = document.querySelector(".player")
 
-
-
-
-
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
 hitBtn.addEventListener("click", pickACard)
@@ -55,6 +51,7 @@ function init() {
   shuffle()    
   initialRender()
   findHandValue()
+  message1.hidden = false
   message1.textContent = `Player hand is ${playerTotal}`
 } 
 function shuffle() {
