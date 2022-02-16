@@ -159,6 +159,7 @@ footer {
 }
 #message-2 {
   border: 2px solid red;
+  color: white;
 }
 #deck {
   grid-area: deck
