@@ -26,12 +26,13 @@ let playerCard1 = document.querySelector("#player-card-1")
 let playerCard2 = document.querySelector("#player-card-2")
 let dealerArea = document.querySelector(".dealer")
 let playerArea = document.querySelector(".player")
+let resetBtn = document.querySelector("#reset-button")
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
 hitBtn.addEventListener("click", playerPicks)
 stayBtn.addEventListener("click", clickStayBtn)
-
+resetBtn.addEventListener("click", replay)
 
 
 /** --------------- Functions ----------------------- */
@@ -103,13 +104,12 @@ function clickStayBtn() {
   dealerCard1.classList.add(dealerHand[0])
   message2.textContent = `The dealer's hand is: ${dealerTotal}`
   findHandValue()
+  if(dealerTotal < 17) {
+    dealerRender()
+  }
   getWinner()
   message2.hidden = false
   message2.textContent=`Dealer hand: ${dealerTotal}`
-  // dealerRender()
-  //   console.log("dealer's hand is greater than 16")
-  //   getWinner()
-  // }
 }
     
 function dealerRender() {
@@ -142,17 +142,17 @@ function getWinner() {
     console.log("Player wins")
     isWinner = 1
     message1.textContent = "Winner winner chicken dinner! You won"
+    return
   } else if(dealerTotal === 21 && playerTotal !== 21) {
     console.log("Dealer wins")
     isWinner = -1
     message1.textContent = "Always bet on the house. Better luck next time"
-    
+    return
   } else if (dealerTotal < 17) {
-    console.log("more cards for the deal")
+    console.log("more cards for the deal. Dealer total: ", dealerTotal )
     isWinner = null
     dealerRender()
-
-  } else if (dealerTotal >= 17) {
+  } else if (dealerTotal > 16 && dealerTotal < 21) {
     console.log("let's compare")
     findHandValue()
     if(playerTotal < 21 && playerTotal > dealerTotal) {
@@ -164,37 +164,28 @@ function getWinner() {
     }
   } else if (dealerTotal > 21 && playerTotal > 21) {
     console.log("both busted")
-    isWinner = null
+    isWinner = "T"
+    message1.textContent = "BUSTED"
   } else if (dealerTotal > 21) {
-    console.log("Dealer busted")
+    isWinner = 1
     message1.textContent = "It's a bust. You win!"
     console.log("It's a bust. You win!")
   } else if (playerTotal > 21) {
+    isWinner = -1
     console.log("Player busted")
-    message1.textContent = "It's a bust. You win!"
+    message1.textContent = "It's a bust! The house wins"
   }
-
-  // compare playerTotal to dealerTotal
-    // if(playerTotal === 21 && dealerTotal !== 21)
-      // isWinner = 1
-      // change message indicating that the player won
-    // if(dealerTotal === 21 & playerTotal !== 21)
-      // isWinner = -1
-      // change message indicating that the dealer won
-    // if (dealerTotal => 17) 
-
     }
+function replay() {
+  if(isWinner !== null) {
+    console.log("play again?")
+    hitBtn.hidden = true
+    stayBtn.hidden = true
+    resetBtn.hidden = false
+    init()
+      }
+}
 
-// playing combos
-    // player gets 21 and dealer does not
-    // dealer gets 21 and dealer does not
-    // both get < 21 => draw
-    // player gets > 21 => dealer wins
-    // dealer gets > 21 => player wins
-// when to stop game and compare values
-    // if dealer hand > 17
-// when to deal more cards to dealer
-    // if dealer hand < 17
 
 /** ------------------ Psuedo Code ------------------ */
 /** Start game function 
