@@ -43,8 +43,8 @@ function letsPlay() {
   playArea.style.backgroundImage = "linear-gradient(319deg, rgba(2,0,36,1) 0%, rgba(0,2,4,0.900462962962963) 55%, rgba(231,230,219,1) 100%)"
   table.hidden = false
   footer.hidden = false
-  message1.hidden = false
-  message2.hidden = false
+  // message1.hidden = false
+  // message2.hidden = false
   resetBtn.hidden = false
   init()
 }
