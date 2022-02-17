@@ -35,7 +35,11 @@ Final Product:
 + JavaScript
 + Git
 
-### Future Endgoals
+### Credits
++ General Assembly CSS card deck
++ [CSS Gradient](https://cssgradient.io/)
+  
+### Stretch Goals
 + Add animations to the **HIT**/**STAY** buttons
   
 + Build functionality for a split button that allows the player to play hands if they draw 2 of the same card

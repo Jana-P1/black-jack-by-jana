@@ -109,11 +109,11 @@ main {
   grid-area: dealer;
   width: 100%;
   padding: 30px 0 20px 10px;
-  /* border: 2px solid red; */
 }
 .dealer > div {
   margin: 0;
   padding: 10px;
+  justify-items: end;
 }
 .house {
   grid-area: house;
@@ -157,7 +157,7 @@ footer {
   color: white;
   grid-area: message-1;
   font-family: 'Archivo Narrow', sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   padding: 10px;
 }
 #message-2 {

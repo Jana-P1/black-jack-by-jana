@@ -56,7 +56,7 @@ function init() {
   shuffle()  
   initialRender()
   findHandValue()
-  message1.textContent = `Player hand is ${playerTotal}`
+  message1.textContent = `Player hand: ${playerTotal}`
 } 
 function shuffle() {
   for (let i = 0; i = deck1.length; i++) {
@@ -148,26 +148,25 @@ function getWinner() {
     isWinner = -1
     mainMessage.textContent = "Dealer wins"
     return
-  } else if (dealerTotal < 17) {
-    isWinner = null
-    dealerRender()
-  } else if (dealerTotal => 17 && dealerTotal < 21) {
-    if(playerTotal < 21 && playerTotal > dealerTotal) {
-      isWinner = 1
-      mainMessage.textContent = "You win!"
-    } else if (playerTotal < 21 && playerTotal < dealerTotal) {
-      isWinner = 1
-      mainMessage.textContent = ""
-    }
-  } else if (dealerTotal > 21 && playerTotal > 21) {
+  } else if (dealerTotal >= 17 && dealerTotal < 21 && dealerTotal > P) {
+    isWinner = -1
+    mainMessage.textContent = "Dealer wins"
+  } else if(dealerTotal >= 17 && dealerTotal < 21 && playerTotal > 21) {
+    isWinner = -1 
+    mainMessage.textContent = ""
+  } 
+  else if (dealerTotal > 21 && playerTotal > 21) {
     isWinner = "T"
-    message1.textContent = "BUSTED!!"
+    mainMessage.textContent = "BUSTED!!"
+  } else if (playerTotal < 21 && playerTotal === dealerTotal) {
+    isWinner = "T"
+    mainMessage.textContent = "It's a tie!"
   } else if (dealerTotal > 21) {
     isWinner = 1
-    message1.textContent = "Dealer's a bust. You win!"
+    mainMessage.textContent = "Dealer's a bust. You win!"
   } else if (playerTotal > 21) {
     isWinner = -1
-    message1.textContent = "It's a bust! Dealer wins"
+    mainMessage.textContent = "It's a bust! Dealer wins"
   }
     }
 function findTheAce(hand, total) {
@@ -176,23 +175,6 @@ function findTheAce(hand, total) {
       total+= 10
     }
   } 
-}
-function replay() {
-  
-  for(let i = playerArea.length; i > 2; i--){
-    playerArea.removeChild("div")
-  }
-  // for(let i = 1; i < 3; i++){
-  //   let card = document.createElement("div")
-  //   card.id = `dealer-card-${i}`
-  //   card.className = "card large outline"
-  //   dealerArea.appendChild(card)
-  // }
-  letsPlay()
-  // init()
-}
-function resetTheBoard() {
-  
 }
 
 
