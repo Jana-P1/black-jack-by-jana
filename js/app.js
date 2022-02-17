@@ -27,6 +27,7 @@ let playerCard2 = document.querySelector("#player-card-2")
 let dealerArea = document.querySelector(".dealer")
 let playerArea = document.querySelector(".player")
 let resetBtn = document.querySelector("#reset-button")
+let mainMessage = document.querySelector(".gametitle")
 
 /** -------------- Event Listeners ------------------ */
 yesBtn.addEventListener("click", letsPlay)
@@ -43,8 +44,8 @@ function letsPlay() {
   playArea.style.backgroundImage = "linear-gradient(319deg, rgba(2,0,36,1) 0%, rgba(0,2,4,0.900462962962963) 55%, rgba(231,230,219,1) 100%)"
   table.hidden = false
   footer.hidden = false
-  // message1.hidden = false
-  // message2.hidden = false
+  message1.hidden = false
+  message2.hidden = true
   resetBtn.hidden = false
   init()
 }
@@ -64,12 +65,6 @@ function shuffle() {
     shuffledDeck.push(randCard)
   }
 } 
-function replay() {
-  playerDiv.setAttribut("remove", true)
-  dealerDiv.setAttribut("remove", true)
-  init()
-}
-
 function initialRender() {
   playerHand = shuffledDeck.splice(0, 2)
   console.log(playerHand)
@@ -92,7 +87,6 @@ function initialRender() {
 function playerPicks() {
   const cardPicked = shuffledDeck.splice(0, 1)
   newCard = cardPicked.join()
-  console.log("newCard: ", newCard)
   playerHand.push(newCard)
   findHandValue()
   message1.textContent = `Player hand is ${playerTotal}`
@@ -101,9 +95,7 @@ function playerPicks() {
 function render() {
   const playerDiv = document.createElement("div")
   playerDiv.classList.add("card", "large", newCard)
-  console.log("playDiv: ", playerDiv)
   playerArea.appendChild(playerDiv)
-  console.log("playerArea: ", playerArea)
 }
 
 function clickStayBtn() {
@@ -146,66 +138,62 @@ function findHandValue() {
     dealerTotal = dealerTotal + cardValues[dealerHand[i]]
     findTheAce(dealerHand, dealerTotal)
   }
-  console.log("Dealers's total: ", dealerTotal)
 }
 function getWinner() {
-  console.log("get winner invoked")
   if (playerTotal === 21 && dealerTotal !== 21) {
-    console.log("Player wins")
     isWinner = 1
-    message1.textContent = "Winner winner chicken dinner! You won"
+    mainMessage.textContent = "You win!"
     return
   } else if(dealerTotal === 21 && playerTotal !== 21) {
-    console.log("Dealer wins")
     isWinner = -1
-    message1.textContent = "Always bet on the house. Better luck next time"
+    mainMessage.textContent = "Dealer wins"
     return
   } else if (dealerTotal < 17) {
-    console.log("more cards for the deal. Dealer total: ", dealerTotal )
     isWinner = null
     dealerRender()
-  } else if (dealerTotal > 16 && dealerTotal < 21) {
-    console.log("let's compare")
-    findHandValue()
+  } else if (dealerTotal => 17 && dealerTotal < 21) {
     if(playerTotal < 21 && playerTotal > dealerTotal) {
-      console.log("Player wins")
       isWinner = 1
+      mainMessage.textContent = "You win!"
     } else if (playerTotal < 21 && playerTotal < dealerTotal) {
-      console.log("Dealer wins")
       isWinner = 1
+      mainMessage.textContent = ""
     }
   } else if (dealerTotal > 21 && playerTotal > 21) {
-    console.log("both busted")
     isWinner = "T"
-    message1.textContent = "BUSTED"
+    message1.textContent = "BUSTED!!"
   } else if (dealerTotal > 21) {
     isWinner = 1
-    message1.textContent = "It's a bust. You win!"
-    console.log("It's a bust. You win!")
+    message1.textContent = "Dealer's a bust. You win!"
   } else if (playerTotal > 21) {
     isWinner = -1
-    console.log("Player busted")
-    message1.textContent = "It's a bust! The house wins"
+    message1.textContent = "It's a bust! Dealer wins"
   }
     }
 function findTheAce(hand, total) {
-  console.log("Finding the Ace")
   for(let i = 0; i < hand.length; i++){
     if(hand[i][1] === "A" && total < 12) {
       total+= 10
     }
-    console.log(total)
   } 
 }
-// function findTheAceD() {
-//   console.log("Finding the Ace")
-//   for(let i = 0; i < dealerHand.length; i++){
-//     if(dealerHand[i][1] === "A" && dealerHand < 12) {
-//       dealerHand+= 10
-//     }
-//   } 
-// }
+function replay() {
   
+  for(let i = playerArea.length; i > 2; i--){
+    playerArea.removeChild("div")
+  }
+  // for(let i = 1; i < 3; i++){
+  //   let card = document.createElement("div")
+  //   card.id = `dealer-card-${i}`
+  //   card.className = "card large outline"
+  //   dealerArea.appendChild(card)
+  // }
+  letsPlay()
+  // init()
+}
+function resetTheBoard() {
+  
+}
 
 
 /** ------------------ Psuedo Code ------------------ */
