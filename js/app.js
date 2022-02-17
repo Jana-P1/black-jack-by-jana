@@ -36,6 +36,7 @@ resetBtn.addEventListener("click", replay)
 
 
 /** --------------- Functions ----------------------- */
+
 function letsPlay() {
   welcomeScreen.hidden = true
   playArea.hidden = false
@@ -44,6 +45,7 @@ function letsPlay() {
   footer.hidden = false
   message1.hidden = false
   message2.hidden = false
+  resetBtn.hidden = false
   init()
 }
 
@@ -63,6 +65,8 @@ function shuffle() {
   }
 } 
 function replay() {
+  playerDiv.setAttribut("remove", true)
+  dealerDiv.setAttribut("remove", true)
   init()
 }
 
@@ -104,6 +108,7 @@ function render() {
 
 function clickStayBtn() {
   // flip over first dealer card
+  hitBtn.setAttribute("disabled", true)
   dealerCard1.classList.remove("back-red")
   dealerCard1.classList.add(dealerHand[0])
   message2.textContent = `The dealer's hand is: ${dealerTotal}`
@@ -124,6 +129,7 @@ function dealerRender() {
   newDealerCard = dealerDiv.classList.add("card", "large", newDealerCard) 
   dealerArea.appendChild(dealerDiv)
   findHandValue()
+  return dealerDiv
   } 
 function findHandValue() {
   playerTotal = 0
@@ -132,11 +138,13 @@ function findHandValue() {
     for (let key in cardValues) {
     }
     playerTotal = playerTotal + cardValues[playerHand[i]]
+    findTheAce(playerHand, playerTotal)
   }
   for (let i = 0; i < dealerHand.length; i++) {
     for (let key in cardValues) {
     }
     dealerTotal = dealerTotal + cardValues[dealerHand[i]]
+    findTheAce(dealerHand, dealerTotal)
   }
   console.log("Dealers's total: ", dealerTotal)
 }
@@ -180,6 +188,24 @@ function getWinner() {
     message1.textContent = "It's a bust! The house wins"
   }
     }
+function findTheAce(hand, total) {
+  console.log("Finding the Ace")
+  for(let i = 0; i < hand.length; i++){
+    if(hand[i][1] === "A" && total < 12) {
+      total+= 10
+    }
+    console.log(total)
+  } 
+}
+// function findTheAceD() {
+//   console.log("Finding the Ace")
+//   for(let i = 0; i < dealerHand.length; i++){
+//     if(dealerHand[i][1] === "A" && dealerHand < 12) {
+//       dealerHand+= 10
+//     }
+//   } 
+// }
+  
 
 
 /** ------------------ Psuedo Code ------------------ */

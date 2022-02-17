@@ -96,7 +96,7 @@ main {
   grid-template-columns: 100%;
   grid-template-rows: 33% 33% 33%;
   margin: 10px 0 0 5px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   height: 100%;
   width: 100%;
   padding: 0;
@@ -109,7 +109,7 @@ main {
   grid-area: dealer;
   width: 100%;
   padding: 30px 0 20px 10px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .dealer > div {
   margin: 0;
@@ -120,14 +120,14 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   padding: 0px;
 }
 
 .game {
   display: flex;
   grid-template-columns: 10% 30% 30% 10%;
-  grid-template-rows: ;
+  grid-template-rows: 40% 60%;
   grid-area: 
   "message-2"
   "deck" "discard-pile"
@@ -136,7 +136,7 @@ main {
 .player {
   grid-area: player;
   margin: 0;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100%;
   padding: 30px 0 20px 10px; 
 }
@@ -147,19 +147,25 @@ main {
 footer{
   display: grid;
   height: 30%;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 footer {
   padding: 0;
 }
 #message-1 {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   color: white;
-  grid-area: message-1
+  grid-area: message-1;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 15px;
+  padding: 10px;
 }
 #message-2 {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   color: white;
+  grid-area: message-2;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 20px;
 }
 #deck {
   grid-area: deck
