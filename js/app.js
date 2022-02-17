@@ -33,7 +33,6 @@ let mainMessage = document.querySelector(".gametitle")
 yesBtn.addEventListener("click", letsPlay)
 hitBtn.addEventListener("click", playerPicks)
 stayBtn.addEventListener("click", clickStayBtn)
-resetBtn.addEventListener("click", replay)
 
 
 /** --------------- Functions ----------------------- */
@@ -46,7 +45,6 @@ function letsPlay() {
   footer.hidden = false
   message1.hidden = false
   message2.hidden = true
-  resetBtn.hidden = false
   init()
 }
 
@@ -67,21 +65,21 @@ function shuffle() {
 } 
 function initialRender() {
   playerHand = shuffledDeck.splice(0, 2)
-  console.log(playerHand)
   for (let i = 0; i < playerHand.length; i++) {
     playerCard1.classList.remove("outline")
     playerCard1.classList.add(playerHand[0])
     playerCard2.classList.remove("outline")
     playerCard2.classList.add(playerHand[1])
   }
+  findTheAceP
   dealerHand = shuffledDeck.splice(0, 2)
-  console.log(dealerHand)
   for (let i = 0; i < playerHand.length; i++) {
     dealerCard1.classList.remove("outline")
     dealerCard1.classList.add("back-red")
     dealerCard2.classList.remove("outline")
     dealerCard2.classList.add(dealerHand[1])
   }
+  findTheAceD
 }
 
 function playerPicks() {
@@ -96,6 +94,7 @@ function render() {
   const playerDiv = document.createElement("div")
   playerDiv.classList.add("card", "large", newCard)
   playerArea.appendChild(playerDiv)
+  findTheAceP
 }
 
 function clickStayBtn() {
@@ -105,9 +104,11 @@ function clickStayBtn() {
   dealerCard1.classList.add(dealerHand[0])
   message2.textContent = `The dealer's hand is: ${dealerTotal}`
   findHandValue()
+  findTheAceD()
   if(dealerTotal < 17) {
     dealerRender()
   }
+  findTheAceD
   getWinner()
   message2.hidden = false
   message2.textContent=`Dealer hand: ${dealerTotal}`
@@ -130,13 +131,13 @@ function findHandValue() {
     for (let key in cardValues) {
     }
     playerTotal = playerTotal + cardValues[playerHand[i]]
-    findTheAce(playerHand, playerTotal)
+    findTheAceP()
   }
   for (let i = 0; i < dealerHand.length; i++) {
     for (let key in cardValues) {
     }
     dealerTotal = dealerTotal + cardValues[dealerHand[i]]
-    findTheAce(dealerHand, dealerTotal)
+    findTheAceD()
   }
 }
 function getWinner() {
@@ -148,12 +149,19 @@ function getWinner() {
     isWinner = -1
     mainMessage.textContent = "Dealer wins"
     return
-  } else if (dealerTotal >= 17 && dealerTotal < 21 && dealerTotal > P) {
+  } else if(dealerTotal === 21 && dealerTotal === playerTotal) {
+    isWinner = "T"
+    mainMessage = "It's a tie"
+  }
+  else if (dealerTotal >= 17 && dealerTotal < 21 && dealerTotal > playerTotal) {
     isWinner = -1
     mainMessage.textContent = "Dealer wins"
+  } else if(playerTotal < 21 && playerTotal > dealerTotal){
+    isWinner = 1
+    mainMessage.textContent = "You win!"
   } else if(dealerTotal >= 17 && dealerTotal < 21 && playerTotal > 21) {
     isWinner = -1 
-    mainMessage.textContent = ""
+    mainMessage.textContent = "Dealer wins"
   } 
   else if (dealerTotal > 21 && playerTotal > 21) {
     isWinner = "T"
@@ -169,12 +177,18 @@ function getWinner() {
     mainMessage.textContent = "It's a bust! Dealer wins"
   }
     }
-function findTheAce(hand, total) {
-  for(let i = 0; i < hand.length; i++){
-    if(hand[i][1] === "A" && total < 12) {
-      total+= 10
+function findTheAceP() {
+  for(let i = 0; i < playerHand.length; i++){
+    if(playerHand[i][1] === "A" && playerTotal < 12) {
+      playerTotal+= 10
     }
   } 
+}
+function findTheAceD() {
+  for(let i = 0; i < dealerHand.length; i++) { if(dealerHand[i][1] === "A" && dealerTotal < 12) {
+    dealerTotal+= 10
+  }
+  }
 }
 
 
