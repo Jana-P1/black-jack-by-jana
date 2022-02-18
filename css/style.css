@@ -120,23 +120,22 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 2px solid red; */
+  
   padding: 0px;
 }
 
 .game {
   display: flex;
-  grid-template-columns: 10% 30% 30% 10%;
+  grid-template-columns: 20% 60% 20%;
   grid-template-rows: 40% 60%;
   grid-area: 
   "message-2"
-  "deck" "discard-pile"
+  "deck" "deck"
   "message-1";
 }
 .player {
   grid-area: player;
   margin: 0;
-  /* border: 2px solid red; */
   width: 100%;
   padding: 30px 0 20px 10px; 
 }
@@ -147,13 +146,11 @@ main {
 footer{
   display: grid;
   height: 30%;
-  /* border: 2px solid red; */
 }
 footer {
   padding: 0;
 }
 #message-1 {
-  /* border: 2px solid red; */
   color: white;
   grid-area: message-1;
   font-family: 'Archivo Narrow', sans-serif;
@@ -161,12 +158,12 @@ footer {
   padding: 10px;
 }
 #message-2 {
-  /* border: 2px solid red; */
   color: white;
   grid-area: message-2;
   font-family: 'Archivo Narrow', sans-serif;
   font-size: 20px;
 }
 #deck {
-  grid-area: deck
+  grid-area: deck;
+  margin: 20px;
 }
