@@ -87,14 +87,16 @@ function playerPicks() {
   newCard = cardPicked.join()
   playerHand.push(newCard)
   findHandValue()
+  findTheAceP()
   message1.textContent = `Player hand is ${playerTotal}`
   render()
+  findTheAceP()
 }
 function render() {
   const playerDiv = document.createElement("div")
   playerDiv.classList.add("card", "large", newCard)
   playerArea.appendChild(playerDiv)
-  findTheAceP
+  findTheAceP()
 }
 
 function clickStayBtn() {
@@ -108,7 +110,7 @@ function clickStayBtn() {
   if(dealerTotal < 17) {
     dealerRender()
   }
-  findTheAceD
+  findTheAceD()
   getWinner()
   message2.hidden = false
   message2.textContent=`Dealer hand: ${dealerTotal}`
